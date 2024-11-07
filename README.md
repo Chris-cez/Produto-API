@@ -9,5 +9,6 @@
 ### 1. Backend
 ```
 docker compose up -d
+npm install
 node server.js
 ```
