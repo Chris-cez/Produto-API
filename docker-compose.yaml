@@ -3,10 +3,14 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456 
+      POSTGRES_DB: mercadinho
     volumes:
-      - pgdata:/var/lib/postgresql/data 
- 
+      - pgdata:/var/lib/postgresql/data
+      - ./BD:/docker-entrypoint-initdb.d
+    ports:
+      - "54320:5432"
   adminer:
     image: adminer
     restart: always
@@ -14,4 +18,4 @@ services:
       - 8080:8080
  
 volumes:
-      - ./BD:/docker-entrypoint-initdb.d
+  pgdata:
