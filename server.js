@@ -1,10 +1,20 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 
 const app = express();
 const port = 3000;
+
+const corsOptions = {
+  origin: '*', // Permitir todas as origens. Para maior segurança, especifique as origens permitidas.
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
